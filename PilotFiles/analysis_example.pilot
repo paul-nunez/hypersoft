@@ -1,0 +1,57 @@
+Example analysis pilot file. Contains keywords representing analysis parameters. Key words are activated by placing a asterisk before the key word.
+In order to run an analysis using the parameters in the analysis_example.pilot, go to the main hypersoft directory and enter:
+./Analysis/hyperanalysis -p PilotFiles/analysis_example.pilot
+
+-Wavelength in nm
+*LAMBDA 710
+
+-Pupil size in meters
+*PPLSIZ 102.4
+PPLSIZ 51.2
+
+-Pupil parameter file
+*PPLPAR ./Pupils/carlina_pix0.1m.par
+PPLPAR ./Pupils/ovla_pix0.1m.par
+PPLPAR ./Pupils/elsa_pix0.1m.par
+PPLPAR ./Pupils/keops_pix0.1m.par
+
+-Pupil fits name (image generated from .par file)
+*PUPILN ./Pupils/pupil.fits
+
+-Input data fits name
+*DATAIN ./Data/data.fits
+DATAIN ./Images/Output/deconvolved.fits
+
+-Pristine image size in mas. Must be the size of resampled pristine image (Simulation)
+*IMGSIZ 1464.480
+
+-Remove background noise (given in avera number of background photons)
+TPHOTO 0.0
+
+-Densification factor
+*DFACTR 1.0
+
+-Apply correction in the densification factor for more precise densification
+*DFCORR
+
+-Rediluted image
+*ANAFIZ ./Images/Secondary/analysis_fizeau.fits
+
+-Number of Richardson-Lucy iterations
+*RLITER 100
+
+-Apply mask in Richardson-Lucy (length of square mask in mas)
+*RLMASK 50
+
+-Resampled pristine image can be used for calculating error
+*PRIST ./Images/Secondary/prist_resampled.fits
+
+-File containing data approximation error and image approximation error (if PRIST is provided)
+*ERRORF ./Dump/error.txt
+
+-Deconvolved image fits name
+*RESULT ./Images/Output/deconvolved.fits
+
+
+
+

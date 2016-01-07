@@ -1,0 +1,49 @@
+#This script makes a copy of the package exclusively, without any other 
+#file than those necessary for simulations or analysis
+
+export ver=0.2
+mkdir ../hypersoft$ver
+cd ../hypersoft$ver
+
+mkdir Simulation
+cp ../Simulation/hypersim13.c ./Simulation/
+cp ../Simulation/Makefile ./Simulation/
+
+mkdir Analysis
+cp ../Analysis/hyperanalysis8.c ./Analysis/
+cp ../Analysis/Makefile ./Analysis/
+
+mkdir Images
+mkdir Images/Pristine
+mkdir Images/Secondary
+mkdir Images/Output
+cp ../Images/Pristine/0.7100micron.fits ./Images/Pristine/
+cp ../Images/Pristine/0.7100micron_235.pgm ./Images/Pristine/
+cp ../Images/Pristine/bet_1464mas.pgm ./Images/Pristine/
+
+mkdir Data
+
+mkdir PilotFiles
+cp ../PilotFiles/simulation_example.pilot ./PilotFiles/
+cp ../PilotFiles/analysis_example.pilot ./PilotFiles/
+
+mkdir Pupils
+cp ../Pupils/carlina_pix0.1m.par ./Pupils/
+cp ../Pupils/ovla_pix0.1m.par ./Pupils/
+cp ../Pupils/elsa_pix0.1m.par ./Pupils/
+cp ../Pupils/keops_pix0.1m.par ./Pupils/
+
+mkdir Tools
+cp ../Tools/fits.c ./Tools/
+cp ../Tools/misc.c ./Tools/
+cp ../Tools/spot_find.c ./Tools/
+
+mkdir Dump
+
+mkdir Scripts
+cp ../Scripts/generate_periodic_pupil.c ./Scripts/
+cp ../Scripts/generate_circular_pupil.c ./Scripts/
+cp ../Scripts/duplicate ./Scripts/
+
+cp -r ../cfitsio/ ./
+

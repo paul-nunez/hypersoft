@@ -1,0 +1,30 @@
+# hypersoft
+//*******************
+HYPERSOFT 
+Version 0.2
+By: Paul D. Nunez
+contact: paul.nunez@oca.eu or
+         paul.nunez@jpl.nasa.gov
+//*******************
+
+* Brief description:
+This tool simulates hypertelescope (diluted telescope) data as would be obtained with different telescope array configurations, pupil densification (See Labeyrie 1996 for details) levels, noise, etc. The tool also deconvolves images using the Richardson-Lucy algorithm.
+
+Hypersoft contains several directories, but has two main folders: A Simulation folder and an Analysis (deconvolution) folder. Simulated data is usually placed in the Data folder and deconvolved images are typically placed in the Images folder. The PilotFiles folder contains example text files with keywords and parameters for the simulations and analysis (see PilotFiles/simulation_example.pilot and PilotFiles/analysis_example.pilot for details). All images are 1024x1024 by default, although the pristine images used for simulations can have less pixels, and are subsequently resampled.
+
+* Before trying to compile the code, the following opensource tools must be installed: cfitsio (for dealing with fits files), gsl (gnu scientiific librara), fftw (fastest fourier transform of the west).
+
+* Installation and basic usage (with command line):
+In order to compile the simulation tools, go to the Simulation folder and type Make. 
+In order to compile the analysis tools, go to the Analysis folder and type Make. 
+In order to run a simulation using the parameters in the simulation_example.pilot, go to the main hypersoft directory and enter:
+./Simulation/hypersim -p PilotFiles/simulation_example.pilot
+
+In order to run an analysis using the parameters in the analysis_example.pilot, go to the main hypersoft directory and enter:
+./Analysis/hyperanalysis -p PilotFiles/analysis_example.pilot
+
+You can create your own simulation and analysis pilot files and just run the simulation and analysis by entering:
+./Simulation/hypersim -p PilotFiles/my_simulation.pilot
+./Analysis/hyperanalysis -p PilotFiles/my_analysis.pilot
+
+The software is still under development. Please do not hesitate to report errors/bugs to paul.nunez@oca.eu

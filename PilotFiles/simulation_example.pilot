@@ -1,0 +1,80 @@
+
+Example simulation pilot file. Contains key words for simulation parameters. Key words are activated by placing a asterisk before the key word.
+In order to run a simulation using the parameters in the simulation_example.pilot, go to the main hypersoft directory and type:
+./Simulation/hypersim -p PilotFiles/simulation_example.pilot
+
+-Wavelength in nm
+*LAMBDA 710
+LAMBDA 1656.3
+
+-Pupil size in meters
+PPLSIZ 204.8
+*PPLSIZ 102.4
+
+-Pupil parameter file (Note: First line in the text file is the number of apertures, second line is the size of the pupil in meters. The following lines are the pixel positions in a (1024x1024 matrix) of each aperture followed by their diameter)
+*PPLPAR ./Pupils/carlina_pix0.1m.par
+PPLPAR ./Pupils/ovla_pix0.1m.par
+PPLPAR ./Pupils/elsa_pix0.1m.par
+PPLPAR ./Pupils/keops_pix0.1m.par
+
+-Option to read the pupil from a pgm image
+PPLPGM ./Pupils/30m_81tel.pgm
+
+-Option to read the pupil from a fits file
+PPLFTS ./Pupils/pupil.fits
+
+-If the PPLPGM or PPLFTS option is selected, one must create a parameter file for the analysis
+GENPAR ./Pupils/generated.par
+
+-Piston (Gaussian) error in sub-pupils (given in radians)
+PPLPHS 1.57
+
+-Uncertainty in sub-pupil positions (given in meters)
+PPLERR 0.05
+
+-Output pupil fits name (Generated from .par file or replica of fits or pgm pupils)
+*PUPILN ./Pupils/pupil.fits
+
+-Pristine fits file (or pgm file) name followed by sqrt of number of pixels
+PRIFTS ./Images/Pristine/0.7100micron.fits 235 //50mas FOV at 0.7micron
+PRIPGM ./Images/Pristine/0.7100micron_235.pgm 235
+*PRIPGM Images/Pristine/bet_1464mas.pgm 1024
+
+Note: If reading pgm files, make sure they are in ascii format, and also make sure that the second line of the .pgm file is removed (i.e. the line starting with a # sign)
+
+-Pristine image size in mas
+IMGSIZ 50 //For 235 pixel image
+*IMGSIZ 1464.48 //For 1024 pixel image
+
+-Resampled pristine image name (should be resampled so that pixel size is compatible with pupil pixel size)
+*RPRIST ./Images/Secondary/prist_resampled.fits
+
+-Fourier magnitude fits name
+*FFTMAG ./Images/Secondary/mod.fits
+
+-MTF fits name
+*MODTRF ./Images/Secondary/mtf.fits
+
+-Fourier transform of Fizeau image fits name
+*FFTFIZ ./Images/Secondary/fft_fizeau.fits
+
+-Fourier transform of densified image fits name
+*FFTDEN ./Images/Secondary/fft_densified.fits
+
+-Average number of photons and thermal photons per pixel (if not selected, data is noiseless)
+PHOTON 1.0 0.1
+
+-Densification factor: Leave this parameter unchanged unless you want to densify the pupil as proposed by Labeyrie
+*DFACTR 1.0
+
+-Apply correction in the densification factor for more precise densification
+*DFCORR
+
+-Fizeau image fits name
+*FIZEAU ./Images/Secondary/fizeau.fits
+
+-Densified image fits name
+*MICHEL ./Data/data.fits
+
+-Option to produce psf only.
+PSFOUT
